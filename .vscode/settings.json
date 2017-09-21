@@ -1,0 +1,10 @@
+{
+    "saveAndRun": {
+        "commands": [
+            {
+                "match": "\\.py$",
+                "cmd": "python driver.py bfs 1,0,4,2,3,5,7,6,8"
+            }
+        ]
+    }
+}
