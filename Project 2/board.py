@@ -1,42 +1,42 @@
-class Board:
-    def __init__(self, initialState):
-        self.initialState = initialState
+class Board(object):
+    def __init__(self, state):
+        self.state = state
 
-    def resolveState(self, state, action):
-        print state
+    def resolve_state(self, action):
+        print self.state
         print action
-        blank_pos = state.index(0)
+        blank_pos = self.state.index(0)
 
         print blank_pos
 
         if action == 'UP':
             if blank_pos in [0, 1, 2]:
-                print 'Can\'t go up'
-                return
+                return None
 
-            print 'COULD GO UP'
-            return
+            new_list = list(self.state)
+            new_list[blank_pos], new_list[blank_pos - 3] = new_list[blank_pos - 3], new_list[blank_pos]
+            return new_list
 
         if action == 'DOWN':
             if blank_pos in [6, 7, 8]:
-                print 'Can\'t go down'
-                return
-                
-            print 'COULD GO DOWN'
-            return
+                return None
+
+            new_list = list(self.state)
+            new_list[blank_pos], new_list[blank_pos + 3] = new_list[blank_pos + 3], new_list[blank_pos]
+            return new_list
 
         if action == 'LEFT':
             if blank_pos in [0, 3, 6]:
-                print 'Can\'t go left'
-                return
+                return None
 
-            print 'COULD GO LEFT'
-            return
+            new_list = list(self.state)
+            new_list[blank_pos], new_list[blank_pos - 1] = new_list[blank_pos - 1], new_list[blank_pos]
+            return new_list
 
         if action == 'RIGHT':
             if blank_pos in [2, 5, 8]:
-                print 'Can\'t go right'
-                return
+                return None
 
-            print 'COULD GO RIGHT'
-            return
+            new_list = list(self.state)
+            new_list[blank_pos], new_list[blank_pos + 1] = new_list[blank_pos + 1], new_list[blank_pos]
+            return new_list
