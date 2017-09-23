@@ -2,12 +2,17 @@ class Board(object):
     def __init__(self, state):
         self.state = state
 
-    def resolve_state(self, action):
-        print self.state
-        print action
-        blank_pos = self.state.index(0)
+    def __eq__(self, other):
+        return self.state == other.state
 
-        print blank_pos
+    def __str__(self):
+        return str(self.state)
+
+    def __hash__(self):
+        return hash(str(self))
+
+    def resolve_state(self, action):
+        blank_pos = self.state.index(0)
 
         if action == 'UP':
             if blank_pos in [0, 1, 2]:

@@ -12,18 +12,31 @@ class State(object):
     def __init__(self, initialState):
         self.initial_state = initialState
         self.board = Board(initialState)
+        self.action = None
+
+    def __eq__(self, other):
+        return self.board == other.board
+
+    def __str__(self):
+        return str(self.board)
+
+    def __hash__(self):
+        return hash(str(self))
 
     def expand(self):
-        self.perform_action('UP')
-        self.perform_action('DOWN')
-        self.perform_action('LEFT')
-        self.perform_action('RIGHT')
+        return [
+            self.perform_action('UP'),
+            self.perform_action('DOWN'),
+            self.perform_action('LEFT'),
+            self.perform_action('RIGHT'),
+        ]
 
     def perform_action(self, action):
         state = self.board.resolve_state(action)
         if state is not None:
-            print 'STATE AFTER %s' % state
-            return State(state)
+            new_state = State(state)
+            new_state.action = action
+            return new_state
         else:
             return self
         
