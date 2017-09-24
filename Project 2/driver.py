@@ -11,14 +11,21 @@ import time
 
 from state import State
 from bfs import BFS
+from dfs import DFS
 
 SEARCH_TYPE = sys.argv[1]
 INITIAL_STATE = map(int, sys.argv[2].split(','))
 
 game = State(INITIAL_STATE);
 
-bfs = BFS(game)
-result = bfs.perform_search()
+search = None
+
+if SEARCH_TYPE == 'bfs':
+    search = BFS(game)
+if SEARCH_TYPE == 'dfs':
+    search = DFS(game)
+
+result = search.perform_search()
 goal_pos = result.position
 
 res = resource.getrusage(resource.RUSAGE_SELF)

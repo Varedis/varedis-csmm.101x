@@ -2,6 +2,7 @@ class Search(object):
     def __init__(self, start):
         self.start = start
         self.explored = set()
+        self.expanded = set()
 
     def initialise(self):
         return

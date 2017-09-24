@@ -25,10 +25,10 @@ class State(object):
 
     def expand(self):
         return [
-            self.perform_action('UP'),
-            self.perform_action('DOWN'),
-            self.perform_action('LEFT'),
-            self.perform_action('RIGHT'),
+            self.perform_action('Up'),
+            self.perform_action('Down'),
+            self.perform_action('Left'),
+            self.perform_action('Right'),
         ]
 
     def perform_action(self, action):
